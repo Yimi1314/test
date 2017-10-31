@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>echarts</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#echart{
+				margin: 100px auto;
+				min-width: 100px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="echart"></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.7.2/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//初始化echarts实例
+			var mychart = echarts.init(document.getElementById("echart"));
+			var option = {
+				//标题组件
+				title:{
+					text:"第一个图表",
+					show:true//是否显示标题组件
+				},
+				//提示框
+				tooltip:{},
+				legend:{
+					data:['销量','价格']
+				},
+				xAxis:{
+					data:[{
+						value:"衬衫",
+						textStyle:{
+							fontSize:20,
+							color:"red",
+							fontWeight:200
+						}
+					},"羊毛衫","牛仔裤","卡通帽","袜子"]
+				},
+				yAxis:{
+					position:"left",
+				},
+				series:[
+					{
+						name:"销量",
+						type:"line",
+						data:[10,20,49,39,97]
+					},
+					{
+						name:"价格",
+						type:"line",
+						data:[120,20,49,59,30]
+					}
+				]
+			};
+			//生成图表
+			mychart.setOption(option);
+			window.onresize = mychart.resize;
+		</script>
+	</body>
+</html>
